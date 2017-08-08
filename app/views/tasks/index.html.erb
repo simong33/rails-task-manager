@@ -1,5 +1,10 @@
 <h1>List of tasks</h1>
 
-<% @tasks.each do |task| %>
-<p> <%= link_to task.name, task_path(task) %> </p>
+<h2> <%= link_to "Add a new task", new_task_path %> </h2>
+
+<% @tasks.each_with_index do |task, index| %>
+<p> <%= index + 1 %> - <%= link_to task.name, task_path(task) %> </p>
+<p> <%= link_to "Edit", edit_task_path(task) %> </p>
+<p> <%= link_to "Delete", task_path(task), method: :delete %> </p>
+<p><%= "*" * 20 %></p>
 <% end %>
